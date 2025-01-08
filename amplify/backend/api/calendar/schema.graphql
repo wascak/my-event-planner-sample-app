@@ -1,0 +1,14 @@
+type Event @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  title: String!
+  description: String
+  date: AWSDateTime!
+  owner: String
+}
+
+type Calendar @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  name: String!
+  events: [Event] @hasMany
+  owner: String
+}
